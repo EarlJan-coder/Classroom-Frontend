@@ -18,7 +18,7 @@ FROM base as builder
 
 ENV NODE_ENV production
 
-COPY --from=deps /app/refine/node_modules ./node_modules
+COPY --from=deps /index/refine/node_modules ./node_modules
 
 COPY . .
 
@@ -30,7 +30,7 @@ ENV NODE_ENV production
 
 RUN npm install -g serve
 
-COPY --from=builder /app/refine/dist ./
+COPY --from=builder /index/refine/dist ./
 
 USER refine
 
