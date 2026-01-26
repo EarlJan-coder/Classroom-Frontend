@@ -1,5 +1,4 @@
 import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest";
-
 import { CreateResponse, GetOneResponse, ListResponse } from "@/types";
 import { BACKEND_BASE_URL } from "@/constants";
 
