@@ -89,7 +89,7 @@ const options: CreateDataProviderOptions = {
 
         mapResponse: async (response) => {
             const json: CreateResponse = await response.json();
-            return json.data ?? {};
+            return json.data ?? [];
         },
     },
 
