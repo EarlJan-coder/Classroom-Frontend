@@ -24,7 +24,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Textarea} from "@/components/ui/textarea.tsx";
 import {Loader2} from "lucide-react";
 import UploadWidget from "@/components/upload-widget.tsx";
-import {Subject} from "@/types";
+import {Subject, User} from "@/types";
 
 
 const Create = () => {
@@ -39,7 +39,7 @@ const Create = () => {
     });
 
     const {
-        refineCore: { onFinish },
+        refineCore : { onFinish },
         handleSubmit,
         formState: { isSubmitting, errors },
         control,
@@ -55,26 +55,24 @@ const Create = () => {
 
     const { query: subjectsQuery } = useList<Subject>({
         resource: 'subjects',
-        pagination:{
+        pagination: {
             pageSize: 100
         }
     });
-
-    const { query: teachersQuery } = useList<Subject>({
+const { query: teachersQuery } = useList<User>({
         resource: 'users',
-        filters:[
+        filters: [
             { field: 'role', operator: 'eq', value: 'teacher' },
         ],
-        pagination:{
+        pagination: {
             pageSize: 100
         }
     });
 
-    const subjects = subjectsQuery?.data?.data || [];
-    const subjectsLoading = subjectsQuery.isLoading;
-
-    const teachers = teachersQuery?.data?.data || [];
-    const teachersLoading = teachersQuery.isLoading;
+const subjects = subjectsQuery?.data?.data || [];
+const subjectsLoading = subjectsQuery.isLoading;
+const teachers = teachersQuery?.data?.data || [];
+const teachersLoading = teachersQuery.isLoading;
 
     const bannerPublicId = form.watch('bannerCldPubId');
     const setBannerImage =  (  file:any, field:any ) => {
