@@ -18,6 +18,7 @@ import SubjectList from "@/pages/subjects/List.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
 import ClassesList from "@/pages/classes/list.tsx";
 import ClassesCreate from "@/pages/classes/create.tsx";
+import ClassesShow from "@/pages/classes/show.tsx";
 import {dataProvider} from "@/providers/data.ts";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
                       name: 'classes',
                       list: 'classes',
                       create: '/classes/create',
+                      show: '/classes/show/:id',
                       meta: { label: 'Classes', icon: <GraduationCap/> }
                   }
               ]}
@@ -71,6 +73,7 @@ function App() {
                           <Route path={'classes'}>
                               <Route index element={<ClassesList />}/>
                               <Route path={'create'} element={<ClassesCreate />}/>
+                              <Route path={'show/:id'} element={<ClassesShow />}/>
                           </Route>
                   </Route>
 
